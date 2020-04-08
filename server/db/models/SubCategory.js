@@ -19,7 +19,7 @@ class SubCategory extends Sequelize.Model {
 		})
 	}
 	static associate(models) {
-		this.belongsTo(models.Categoty)
+		this.belongsTo(models.Category)
 	}
 }
 module.exports = SubCategory

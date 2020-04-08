@@ -1,5 +1,4 @@
-// const User = require('../db/models/User')
-const { User } = require('../db/index')
+const { User, Goods } = require('../db/index')
 
 const Auth = require('../middlewares/auth')
 const {
@@ -37,8 +36,10 @@ const avatar = async ctx => {
   ctx.body = ctx.request.files.file.path.split('\\').pop()
 }
 
-const profile = async ctx => {
-  const id = ctx.params.id
+const updateProfile = async ctx => {
+  const id = ctx.params.id || ctx.state.auth.id
+  console.log(id)
+
   // try {
   await User.updateProfile(id, ctx.request.body)
   // } catch (error) {
@@ -47,7 +48,7 @@ const profile = async ctx => {
   throw new Success('修改成功')
 }
 
-const password = async ctx => {
+const changePassword = async ctx => {
   const id = ctx.params.id
   const user = await User.findByPk(id)
   if (!user) throw new NotFoundException('用户不存在')
@@ -63,16 +64,30 @@ const password = async ctx => {
     case Auth.USER:
       if (vals.oldPassword !== user.password)
         throw new ParameterException('旧密码输入错误')
-      user.password = vals.password   
-      await user.save()  
+      user.password = vals.password
+      await user.save()
   }
-  
+}
+
+const getProfile = async ctx => {
+  const id = ctx.params.id || ctx.state.auth.id
+  ctx.body = await User.findByPk(id)
+}
+
+const getSelling = async ctx => {
+  const userId = ctx.params.id
+  ctx.body = await Goods.findAll({
+    where: { userId },
+    attributes: { exclude: ['deletedAt'] }
+  })
 }
 
 module.exports = {
   login,
   register,
   avatar,
-  profile,
-  password,
+  updateProfile,
+  changePassword,
+  getProfile,
+  getSelling
 }

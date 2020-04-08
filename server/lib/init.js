@@ -18,9 +18,7 @@ class InitManager {
 
 		const models = {}
 		const modelsDir = path.join(__dirname, '../db/models')
-		console.log(modelsDir)
-		
-
+	
 		fs
 			.readdirSync(modelsDir)
 			.forEach(file => {

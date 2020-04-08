@@ -5,6 +5,10 @@ const register = user => http.post('/user/register', user)
 const uploadAvatar = avatar => http.post('/user/avatar', avatar)
 
 // 用户信息或密码
-const updateUser = (id, newVal) => http.post(`/user/${id}/profile`, newVal)
+const updateProfile = (id, profile) => http.put(`/user/${id}/profile`, profile)
 
-export { login, register, uploadAvatar, updateUser }
+const fetchProfile = () => http.get('/user/profile')
+
+const fetchSelling = id => http.get(`/user/${id}/selling`)
+
+export { login, register, uploadAvatar, updateProfile, fetchProfile, fetchSelling }

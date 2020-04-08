@@ -4,6 +4,9 @@ import Main from '../views/Main'
 import User from '../views/User'
 import UserProfile from '../views/UserProfile'
 import SecurityMenu from '../components/SecurityMenu'
+import Home from '../views/Home'
+import UploadGoods from '../views/UploadGoods'
+import SellingGoods from '../views/SellingGoods'
 
 Vue.use(VueRouter)
 
@@ -18,7 +21,8 @@ const routes = [
     name: 'main',
     component: Main,
     children: [
-      { path: '/user', name: 'user', component: User }
+      { path: '/user', name: 'user', component: User },
+      { path: '/home', name: 'home', component: Home }
     ]
   },
   {
@@ -30,7 +34,16 @@ const routes = [
     path: '/user/security',
     name: 'security',
     component: SecurityMenu
-
+  },
+  {
+    path: '/user/sell',
+    name: 'sell',
+    component: UploadGoods
+  },
+  {
+    path: '/user/selling',
+    name: 'selling',
+    component: SellingGoods
   }
 
   // {

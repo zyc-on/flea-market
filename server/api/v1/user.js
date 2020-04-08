@@ -7,7 +7,7 @@ const {
   loginValidator,
   // profileValidator,
 } = require('../../middlewares/validators')
-const { login, register, avatar, profile,password } = require('../../controllers/user')
+const { login, register, avatar, updateProfile,changePassword,getProfile,getSelling } = require('../../controllers/user')
 
 const router = new Router({
   prefix: '/user',
@@ -29,9 +29,14 @@ router.post('/register', loginValidator, register)
 
 router.post('/avatar', avatar)
 
-router.post('/:id/profile', profile)
+router.put('/:id/profile', updateProfile)
 
-router.post('/:id/password',password)
+router.get('/profile',new Auth(6).m,getProfile)
+
+
+router.put('/:id/password',changePassword)
+
+router.get('/:id/selling',getSelling)
 
 
 module.exports = router
