@@ -43,10 +43,10 @@ export default {
 .search-wrapper {
   display: flex;
   align-items: center;
-  background-color: #fff;
 
   .search {
     flex-grow: 1;
+      background-color: #FAFAFA;
   }
 
   .plus {

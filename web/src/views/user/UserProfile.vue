@@ -48,7 +48,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { uploadAvatar } from '../api/user'
+import { uploadAvatar } from '@/api/user'
 export default {
   data () {
     return {

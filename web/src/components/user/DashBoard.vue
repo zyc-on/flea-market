@@ -1,16 +1,17 @@
 <template>
   <div class="board">
-    <div @click="$router.push('/user/sold')">
-      <span>0</span>
-      <span>我卖出的</span>
-    </div>
-    <div @click="$router.push('/user/bought')">
-      <span>0</span>
-      <span>我买到的</span>
-    </div>
-    <div @click="$router.push('/user/selling')">
-      <span>{{ sellingCount }}</span>
-      <span>正在卖</span>
+      <div @click="$router.push('/user/sold')">
+        <span>0</span>
+        <span>我卖出的</span>
+      </div>
+
+      <div @click="$router.push('/user/bought')">
+        <span>0</span>
+        <span>我买到的</span>
+      </div>
+      <div @click="$router.push('/user/selling')">
+        <span>{{ sellingCount }}</span>
+        <span>正在卖</span>
     </div>
   </div>
 </template>

@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import validate from '../mixins/login/validate'
-import { register } from '../api/user'
+import validate from '@/mixins/login/validate'
+import { register } from '@/api/user'
 
 export default {
   name: 'Register',

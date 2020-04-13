@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import './plugins/vant.js'
 
+import './assets/icon/iconfont.css'
+
 Vue.config.productionTip = false
 
 new Vue({

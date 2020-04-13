@@ -57,7 +57,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { uploadImage } from '../api/goods'
+import { uploadImage } from '@/api/goods'
 
 export default {
   data () {

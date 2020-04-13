@@ -3,6 +3,12 @@
     <div class="menu-wrapper">
       <menu-item
         @onSelect="$router.push('/user/profile')"
+        icon="star-o"
+        name="我收藏的宝贝"
+        arrow="arrow"
+      />
+      <menu-item
+        @onSelect="$router.push('/user/profile')"
         icon="edit"
         name="修改个人信息"
         arrow="arrow"
@@ -38,7 +44,7 @@
 </template>
 
 <script>
-import MenuItem from '../components/MenuItem'
+import MenuItem from './MenuItem'
 export default {
   components: {
     MenuItem

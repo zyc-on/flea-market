@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import MenuItem from '../components/MenuItem'
+import MenuItem from '@/components/user/MenuItem'
 export default {
   components: {
     MenuItem

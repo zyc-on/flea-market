@@ -1,19 +1,19 @@
 <template>
-  <div class="user-wrapper">
-    <div class="basic-info">
-      <span>{{ profile.username }}</span>
-      <p>
-        {{ profile.motto }}
-      </p>
+    <div class="user-wrapper">
+      <div class="basic-info">
+        <span>{{ profile.username }}</span>
+        <p>
+          {{ profile.motto }}
+        </p>
+      </div>
+      <van-image
+        height="60"
+        width="60"
+        round
+        fit="cover"
+        :src="`http://localhost:3000/images/avatar/${this.profile.avatar}`"
+      />
     </div>
-    <van-image
-      height="60"
-      width="60"
-      round
-      fit="cover"
-      :src="`http://localhost:3000/images/avatar/${this.profile.avatar}`"
-    />
-  </div>
 </template>
 
 <script>

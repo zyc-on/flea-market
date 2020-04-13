@@ -3,8 +3,8 @@ import {
   updateProfile,
   fetchProfile,
   fetchSelling
-} from '../../api/user'
-import { uploadGoods } from '../../api/goods'
+} from '@/api/user'
+import { uploadGoods, updateGoods } from '@/api/goods'
 
 import { resolveAccountId, resolveProfile } from '../lib/userLib'
 export default {
@@ -19,7 +19,9 @@ export default {
     bought: []
   },
   getters: {
-    sellingCount: state => state.selling.length
+    sellingCount: state => state.selling.length,
+    getSellingById: state => id =>
+      state.selling.find(goods => goods.id === parseInt(id))
   },
   mutations: {
     setAccountId (state, payload) {
@@ -34,6 +36,10 @@ export default {
     },
     setSelling (state, goods) {
       state.selling = goods
+    },
+    setTargetSelling (state, goods) {
+      const index = state.selling.findIndex(item => item.id === goods.id)
+      state.selling.splice(index, 1, goods)
     }
   },
   actions: {
@@ -86,10 +92,19 @@ export default {
         .catch(err => Promise.reject(err))
     },
 
+    updateGoods ({ state, commit }, goods) {
+      console.log('updateGoods')
+      return updateGoods(goods.id, goods)
+        .then(res => {
+          console.log('updateGoods ,success')
+          commit('setTargetSelling', goods)
+        })
+        .catch(err => Promise.reject(err))
+    },
+
     async initialize ({ dispatch }) {
       await dispatch('fetchProfile')
       await dispatch('fetchSelling')
     }
-
   }
 }

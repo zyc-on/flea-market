@@ -24,8 +24,9 @@ import {
   Slider,
   Toast,
   Card,
-  SwipeCell
-  // Stepper
+  SwipeCell,
+  Skeleton,
+  List
 } from 'vant'
 Vue.use(Cell)
 Vue.use(Button)
@@ -52,4 +53,6 @@ Vue.use(Slider)
 Vue.use(Toast)
 Vue.use(Card)
 Vue.use(SwipeCell)
+Vue.use(Skeleton)
+Vue.use(List)
 // Vue.use(Stepper)

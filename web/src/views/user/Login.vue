@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import validate from '../mixins/login/validate'
+import validate from '@/mixins/login/validate'
 import { mapActions } from 'vuex'
 export default {
   name: 'Login',
@@ -68,7 +68,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import 'src/assets/style/login/login.scss';
+@import '@/assets/style/login/login.scss';
 </style>
 <!--<style lang="scss" scoped>-->
 <!--.login-container{-->

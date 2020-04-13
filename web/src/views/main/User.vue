@@ -8,9 +8,9 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import UserBanner from '../components/UserBanner'
-import UserMenu from '../components/UserMenu'
-import DashBoard from '../components/DashBoard'
+import UserBanner from '@/components/user/UserBanner'
+import UserMenu from '@/components/user/UserMenu'
+import DashBoard from '@/components/user/DashBoard'
 export default {
   components: {
     UserMenu,
@@ -18,7 +18,8 @@ export default {
     UserBanner
   },
   created () {
-    !this.profile.username && this.initialize()
+    // TODO 根据情况获取数据
+    this.initialize()
   },
   computed: {
     ...mapState('user', ['profile'])

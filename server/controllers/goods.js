@@ -14,7 +14,26 @@ const images = async ctx => {
   ctx.body = ctx.request.files.file.path.split('\\').pop()
 }
 
+const updateGoods = async ctx => {
+  ctx.body = await Goods.update(ctx.request.body, {
+    where: {
+      id: ctx.request.body.id,
+    },
+  })
+}
+
+const latestGoods = async ctx => {
+  ctx.body = await Goods.getLatest()
+}
+
+const getGoodsById = async ctx => {
+  ctx.body = await Goods.getById(ctx.params.id)
+}
+
 module.exports = {
   uploadGoods,
   images,
+  updateGoods,
+  latestGoods,
+  getGoodsById
 }
