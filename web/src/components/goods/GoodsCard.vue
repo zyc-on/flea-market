@@ -1,7 +1,8 @@
 <template>
   <div class="goods-card" @click="$router.push(`/goods/id/${goods.id}`)">
     <van-image
-      fit="cover"
+      height="200"
+      fit="contain"
       :src="`http://localhost:3000/images/goods/${goods.images.split('?')[1]}`"
     />
     <p>{{ goods.name }}</p>

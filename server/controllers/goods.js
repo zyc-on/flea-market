@@ -23,7 +23,9 @@ const updateGoods = async ctx => {
 }
 
 const latestGoods = async ctx => {
-  ctx.body = await Goods.getLatest()
+  console.log(ctx.query.page)
+  
+  ctx.body = await Goods.getLatest(ctx.query)
 }
 
 const getGoodsById = async ctx => {

@@ -5,25 +5,33 @@ class Goods extends Sequelize.Model {
   static getLatest({ page = 1, limit = 6 } = {}) {
     return Goods.findAndCountAll({
       offset: (page - 1) * limit,
-      limit,
+      limit: parseInt(limit),
       attributes: { exclude: ['deletedAt'] },
       include: [
         {
           model: User,
-          attributes: [ 'username', 'avatar'],
+          attributes: ['username', 'avatar'],
         },
       ],
     })
   }
-  static getById(id){
-    return Goods.findByPk(id,{
-      attributes:{ exclude: ['deletedAt']},
-      include:[
-        { 
+  static getById(id) {
+    return Goods.findByPk(id, {
+      attributes: { exclude: ['deletedAt'] },
+      include: [
+        {
           model: User,
-          attributes:['id','username', 'avatar','school','location','createdAt','motto']
-        }
-      ]
+          attributes: [
+            'id',
+            'username',
+            'avatar',
+            'school',
+            'location',
+            'createdAt',
+            'motto',
+          ],
+        },
+      ],
     })
   }
 

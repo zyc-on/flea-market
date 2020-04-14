@@ -5,6 +5,11 @@ export default {
   state: {
     categories: ''
   },
+  getters:{
+    mapCategory: state=>(categoryId,subcategoryId)=>{
+      
+    }
+  },
   mutations: {
     setCategories (state, payload) {
       state.categories = payload

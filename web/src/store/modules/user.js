@@ -53,7 +53,7 @@ export default {
         })
         .catch(err => Promise.reject(err))
     },
-    // 修改密码和个人信息公用 profile:{}  {pwd:123456}
+
     updateProfile ({ state, commit }, profile) {
       return updateProfile(state.id, profile)
         .then(res => {
@@ -62,7 +62,7 @@ export default {
         })
         .catch(err => Promise.reject(err))
     },
-    fetchProfile ({ state, commit }) {
+    fetchProfile ({ commit }) {
       console.log('fetchProfile')
       return fetchProfile()
         .then(res => {
@@ -72,7 +72,7 @@ export default {
         })
         .catch(err => Promise.reject(err))
     },
-    uploadGoods ({ state, commit }, goods) {
+    uploadGoods ({ commit }, goods) {
       console.log('uploadGoods')
       return uploadGoods(goods)
         .then(res => {
@@ -92,7 +92,7 @@ export default {
         .catch(err => Promise.reject(err))
     },
 
-    updateGoods ({ state, commit }, goods) {
+    updateGoods ({ commit }, goods) {
       console.log('updateGoods')
       return updateGoods(goods.id, goods)
         .then(res => {

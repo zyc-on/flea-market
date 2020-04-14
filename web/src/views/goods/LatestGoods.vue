@@ -24,7 +24,7 @@ export default {
     return {
       latestGoods: [],
       loading: false,
-      finished: true,
+      finished: false,
       error: false,
       total: 0,
       query: {
@@ -33,21 +33,26 @@ export default {
       }
     }
   },
-  created () {
-    this.fetchLatestGoods()
-  },
+  // created () {
+  //   this.fetchLatestGoods()
+  // },
   methods: {
     fetchLatestGoods () {
+      this.loading = true
+      console.log(this.query.page)
+
       getLatestGoods(this.query)
         .then(res => {
           console.log('成功获取最新商品')
           this.latestGoods.push(...res.data.rows)
+          this.loading = false
           this.total = res.data.count
           this.checkFinish()
         })
         .catch(e => (this.error = true))
     },
     checkFinish () {
+      console.log(this.query.page)
       this.finished = this.total - this.query.page * this.query.limit <= 0
       if (this.finished) return
       this.query.page++
@@ -57,6 +62,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.van-list{
+  margin-bottom: 30px;
+}
+
 .latest {
   display: flex;
   flex-wrap: wrap;
