@@ -12,14 +12,12 @@ const login = async ctx => {
   console.log(ctx.request.body)
 
   const user = await User.login(ctx.request.body)
-
   // console.table(Object.getOwnPropertyDescriptors(user.dataValues))
   // console.log(delete user.dataValues.password)
   // console.log(user.password)
   delete user.dataValues.password
 
   const token = generateToken(user.id, Auth.USER)
-
   ctx.body = {
     user,
     token,
@@ -40,11 +38,7 @@ const updateProfile = async ctx => {
   const id = ctx.params.id || ctx.state.auth.id
   console.log(id)
 
-  // try {
   await User.updateProfile(id, ctx.request.body)
-  // } catch (error) {
-  //   throw error
-  // }
   throw new Success('修改成功')
 }
 
@@ -78,7 +72,7 @@ const getSelling = async ctx => {
   const userId = ctx.params.id
   ctx.body = await Goods.findAll({
     where: { userId },
-    attributes: { exclude: ['deletedAt'] }
+    attributes: { exclude: ['deletedAt'] },
   })
 }
 
@@ -89,5 +83,5 @@ module.exports = {
   updateProfile,
   changePassword,
   getProfile,
-  getSelling
+  getSelling,
 }

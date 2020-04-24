@@ -4,12 +4,14 @@ const SubCategory = require('./SubCategory')
 class Category extends Sequelize.Model {
   static getCategories() {
     return Category.findAll({
-      attributes: ['id',['name', 'text']],
-      include: [{
-        model: SubCategory,
-				as: 'children',
-				attributes: ['id',['name', 'text']],
-      }],
+      attributes: ['id', ['name', 'text']],
+      include: [
+        {
+          model: SubCategory,
+          as: 'children',
+          attributes: ['id', ['name', 'text']],
+        },
+      ],
     })
   }
 
@@ -35,7 +37,7 @@ class Category extends Sequelize.Model {
   }
 
   static associate(models) {
-    this.hasMany(models.SubCategory,{as:'children'})
+    this.hasMany(models.SubCategory, { as: 'children' })
   }
 }
 module.exports = Category

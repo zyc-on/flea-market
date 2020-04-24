@@ -1,6 +1,6 @@
 const { ParameterException } = require('../lib/http-exception')
 
-const { validateAccount, validatePassword,validateLogin,validateProfile } = require('../lib/validator/rules')
+const {validateLogin,validateProfile } = require('../lib/validator/rules')
 
 const loginValidator = async (ctx, next) => {
 

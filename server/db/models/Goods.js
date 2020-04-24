@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 
 const User = require('./User')
 class Goods extends Sequelize.Model {
-  static getLatest({ page = 1, limit = 6 } = {}) {
+  static getLatest({ page = 1, limit = 6 }) {
     return Goods.findAndCountAll({
       offset: (page - 1) * limit,
       limit: parseInt(limit),

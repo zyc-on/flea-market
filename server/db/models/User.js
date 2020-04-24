@@ -34,14 +34,6 @@ class User extends Sequelize.Model {
   }
 
   static updateProfile(id, profile) {
-    // let user = await User.findByPk(id)
-    // user.username = profile.username
-    // user.sex = profile.sex
-    // user.avatar = profile.avatar
-    // user.school = profile.school
-    // user.motto = profile.motto
-    // user = await user.save()
-    // User.update()
     return User.update(profile, { where: { id } })
   }
 
@@ -72,7 +64,7 @@ class User extends Sequelize.Model {
         sex: Sequelize.BOOLEAN,
         avatar: {
           type: Sequelize.STRING,
-          defaultValue: '/avatar/112.jpg',
+          defaultValue: '112.jpg',
         },
         school: Sequelize.STRING,
         location: Sequelize.STRING,
