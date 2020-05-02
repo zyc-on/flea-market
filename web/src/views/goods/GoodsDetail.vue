@@ -2,7 +2,7 @@
   <div class="detail-container">
     <goods-detail-header />
     <goods-detail-main :goods="goods" />
-    <goods-detail-footer :user="goods.user" />
+    <goods-detail-footer :user="goods.user" :goodsId="goods.id" />
   </div>
 </template>
 

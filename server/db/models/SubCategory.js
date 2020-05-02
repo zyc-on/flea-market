@@ -12,6 +12,11 @@ class SubCategory extends Sequelize.Model {
 				type: Sequelize.STRING,
 				unique: true,
 				allowNull: false
+			},
+			ename:{
+				type:Sequelize.STRING,
+				unique: true,
+				allowNull: false
 			}
 		}, {
 			sequelize,

@@ -6,14 +6,18 @@ const uploadGoods = goods => http.post('/goods', goods)
 
 const updateGoods = (id, goods) => http.put(`/goods/${id}`, goods)
 
-const getLatestGoods = params => http.get('goods/latest', { params })
+const getLatestGoods = query => http.get('goods/latest', { params: query })
 
-const getGoodsByCategory = params =>
-  http.get('/goods/category', {
-    params: params
+const getGoodsByCategory = (id, query) =>
+  http.get(`/goods/category/${id}`, {
+    params: query
   })
 
 const getGoodsById = id => http.get(`/goods/${id}`)
+
+const searchGoods = query => http.get('/goods/search', {
+  params: query
+})
 
 export {
   uploadImage,
@@ -21,5 +25,6 @@ export {
   updateGoods,
   getLatestGoods,
   getGoodsByCategory,
-  getGoodsById
+  getGoodsById,
+  searchGoods
 }

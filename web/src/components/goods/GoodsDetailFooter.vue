@@ -2,14 +2,14 @@
   <div>
     <div class="user">
       <div>
-        <span>{{ user.username }}</span>
-        <span>{{ user.school }} 来闲集{{ days }}天了</span>
+        <span>{{ user&&user.username}}</span>
+        <span>{{ user&&user.school }} 来闲集{{ days }}天了</span>
       </div>
       <van-image
         height="50"
         width="50"
         fit="cover"
-        :src="`http://localhost:3000/images/avatar/${this.user.avatar}`"
+        :src="`http://localhost:3000/images/avatar/${this.user&&this.user.avatar}`"
       />
     </div>
     <div class="holder"></div>
@@ -33,13 +33,10 @@
 
 <script>
 export default {
-  props: {
-    user: Object,
-    goodsId: String
-  },
+  props: ['user', 'goodsId'],
   computed: {
     days () {
-      const date = new Date(this.user.createdAt)
+      const date = new Date(this.user && this.user.createdAt)
       const now = new Date()
       return Math.floor((now - date) / (1000 * 3600 * 24))
     }

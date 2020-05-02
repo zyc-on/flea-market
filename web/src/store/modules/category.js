@@ -3,12 +3,16 @@ import { fetchCategories } from '../../api/category'
 export default {
   namespaced: true,
   state: {
-    categories: ''
+    categories: []
   },
-  getters:{
-    mapCategory: state=>(categoryId,subcategoryId)=>{
-      
+  getters: {
+    mapCategory: state => ename => {
+      console.log(ename)
+      console.log(state.categories)
+
+      return state.categories.find(item => item.ename === ename)
     }
+
   },
   mutations: {
     setCategories (state, payload) {

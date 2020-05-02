@@ -2,8 +2,9 @@
   <div class="search-wrapper">
     <van-search
       class="search"
-      v-model="keyWord"
+      v-model="q"
       placeholder="请输入搜索关键词"
+      @search="onSearch"
     />
     <van-icon @click="show = true" class="plus" size="20" name="add-o" />
     <van-action-sheet
@@ -19,7 +20,7 @@
 export default {
   data () {
     return {
-      keyWord: '',
+      q: '',
       show: false,
       actions: [
         { name: '上传商品', path: '/user/sell' },
@@ -34,6 +35,9 @@ export default {
     onSelect (item) {
       this.show = false
       this.$router.push('/user/sell')
+    },
+    onSearch () {
+      this.$router.push({ path: '/goods/search', query: { q: this.q } })
     }
   }
 }
@@ -46,7 +50,7 @@ export default {
 
   .search {
     flex-grow: 1;
-      background-color: #FAFAFA;
+    background-color: #fafafa;
   }
 
   .plus {

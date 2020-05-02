@@ -118,7 +118,7 @@ export default {
     }
   },
   created () {
-    !this.categories && this.fetchCategories()
+    !this.categories.length && this.fetchCategories()
   }
 }
 </script>

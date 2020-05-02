@@ -1,6 +1,6 @@
 <template>
   <div class="categories">
-    <hot-category-item name="手机" icon="shouji" @onSelect="$router.push('/user')" />
+    <hot-category-item name="手机" icon="shouji" @onSelect="$router.push('/goods/phone')" />
     <hot-category-item name="美妆" icon="meitimeirong" />
     <hot-category-item name="男装" icon="tixu" />
     <hot-category-item name="女装" icon="qunzi" />

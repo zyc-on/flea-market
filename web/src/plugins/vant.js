@@ -26,7 +26,9 @@ import {
   Card,
   SwipeCell,
   Skeleton,
-  List
+  List,
+  DropdownMenu,
+  DropdownItem
 } from 'vant'
 Vue.use(Cell)
 Vue.use(Button)
@@ -55,4 +57,6 @@ Vue.use(Card)
 Vue.use(SwipeCell)
 Vue.use(Skeleton)
 Vue.use(List)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
 // Vue.use(Stepper)

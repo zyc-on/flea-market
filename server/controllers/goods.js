@@ -24,7 +24,7 @@ const updateGoods = async ctx => {
 
 const latestGoods = async ctx => {
   console.log(ctx.query.page)
-  
+
   ctx.body = await Goods.getLatest(ctx.query)
 }
 
@@ -32,10 +32,25 @@ const getGoodsById = async ctx => {
   ctx.body = await Goods.getById(ctx.params.id)
 }
 
+const getGoodsByCategory = async ctx => {
+  console.log(ctx.query)
+  
+  ctx.body = await Goods.getByCategory(ctx.params.id,ctx.query)
+}
+
+const search = async ctx => {
+  
+  console.log(ctx.query)
+  
+  ctx.body = await Goods.search(ctx.query)
+}
+
 module.exports = {
   uploadGoods,
   images,
   updateGoods,
   latestGoods,
-  getGoodsById
+  getGoodsById,
+  search,
+  getGoodsByCategory
 }

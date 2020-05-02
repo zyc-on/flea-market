@@ -35,7 +35,7 @@ export default {
       )
     },
     images () {
-      const images = this.goods.images.split('?')
+      const images = (this.goods.images || '').split('?')
       images.shift()
       return images
     }

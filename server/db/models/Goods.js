@@ -1,6 +1,9 @@
 const Sequelize = require('sequelize')
 
+const Category = require('./Category')
 const User = require('./User')
+const SubCategory = require('./SubCategory')
+
 class Goods extends Sequelize.Model {
   static getLatest({ page = 1, limit = 6 }) {
     return Goods.findAndCountAll({
@@ -15,6 +18,27 @@ class Goods extends Sequelize.Model {
       ],
     })
   }
+
+  static getByCategory(id,{page=1,limit = 6,order,field}){
+    order = order === 'DESC' ? 'DESC' : 'ASC'
+    field = field === 'updatedAt' ? 'updatedAt' : 'price'
+    return Goods.findAndCountAll({ 
+      offset: (page - 1) * limit,
+      limit: parseInt(limit),
+      where: {
+        categoryId:id
+      },
+      attributes: { exclude: ['deletedAt'] },
+      include: [
+        {
+          model: User,
+          attributes: ['username', 'avatar'],
+        },
+      ],
+      order: [[field, order]],   
+    })
+  }
+
   static getById(id) {
     return Goods.findByPk(id, {
       attributes: { exclude: ['deletedAt'] },
@@ -32,6 +56,37 @@ class Goods extends Sequelize.Model {
           ],
         },
       ],
+    })
+  }
+
+  static search({ q, page = 1, order = 'DESC', field = 'updatedAt' }) {
+    order = order === 'DESC' ? 'DESC' : 'ASC'
+    field = field === 'updatedAt' ? 'updatedAt' : 'price'
+
+    return Goods.findAndCountAll({
+      offset: (page - 1) * 6,
+      limit: 8,
+      where: {
+        name: {
+          [Sequelize.Op.like]: '%' + q + '%',
+        },
+      },
+      attributes: { exclude: ['deletedAt'] },
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'username'],
+        },
+        {
+          model: Category,
+          attributes: ['id', 'name'],
+        },
+        {
+          model: SubCategory,
+          attributes: ['id', 'name'],
+        },
+      ],
+      order: [[field, order]],
     })
   }
 

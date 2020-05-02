@@ -4,12 +4,12 @@ const SubCategory = require('./SubCategory')
 class Category extends Sequelize.Model {
   static getCategories() {
     return Category.findAll({
-      attributes: ['id', ['name', 'text']],
+      attributes: ['id', ['name', 'text'],'ename'],
       include: [
         {
           model: SubCategory,
           as: 'children',
-          attributes: ['id', ['name', 'text']],
+          attributes: ['id', ['name', 'text'],'ename'],
         },
       ],
     })
@@ -28,6 +28,10 @@ class Category extends Sequelize.Model {
           unique: true,
           allowNull: false,
         },
+        ename:{
+          type:Sequelize.STRING,
+          allowNull: false,
+        }
       },
       {
         sequelize,
